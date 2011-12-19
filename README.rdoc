@@ -14,7 +14,9 @@ Using bundler
 
 == Usage
 
-Mix ValidationMatchers::ActiveModel into your specs to get access to "pass_validate_each" and "fail_validate_each" methods.
+Currently we support testing subclasses of ActiveModel::EachValidator.
+
+Use the gem in your specs by including ValidationMatchers::ActiveModel.  You will get access to "pass_validate_each" and "fail_validate_each" methods.
 
 == Example
 
