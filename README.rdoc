@@ -1,0 +1,34 @@
+= Validation Matchers 
+
+RSpec matchers for testing ActiveModel custom validations in isolation from your application's models
+
+== Install
+
+From the command line
+
+  gem install validation_matchers
+
+Using bundler
+ 
+ gem "validation_matchers", "~> 0.1.0"
+
+== Usage
+
+Mix ValidationMatchers::ActiveModel into your specs to get access to "pass_validate_each" and "fail_validate_each" methods.
+
+== Example
+
+  require 'validation_matchers/active_model' 
+
+  describe MyActiveModelValidator do
+    include ValidationMatchers::ActiveModel
+    subject { MyActiveModelValidator.new({:attributes=>{}}) }
+
+    it "allows a valid value" do
+      subject.should pass_validate_each(:attr, "valid value") 
+    end
+
+    it "rejects an invalid value" do
+      subject.should fail_validate_each(:attr, "some bad value") 
+    end
+  end
